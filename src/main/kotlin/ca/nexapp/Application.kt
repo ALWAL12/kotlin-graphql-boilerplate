@@ -7,8 +7,11 @@ import ca.nexapp.users.api.UserResource
 import ca.nexapp.users.persistence.UserInMemoryRepository
 import com.codahale.metrics.health.HealthCheck
 import io.dropwizard.setup.Environment
+import org.slf4j.LoggerFactory
 
 class Application : io.dropwizard.Application<Configuration>() {
+
+    private val logger = LoggerFactory.getLogger(Application::class.java)
 
     override fun run(configuration: Configuration, environment: Environment) {
         val healthCheck = object : HealthCheck() {
@@ -28,6 +31,8 @@ class Application : io.dropwizard.Application<Configuration>() {
 
         environment.jersey().register(pingResource)
         environment.jersey().register(userResource)
+
+        logger.warn("Application has started in {}", configuration.environment)
     }
 
     companion object {

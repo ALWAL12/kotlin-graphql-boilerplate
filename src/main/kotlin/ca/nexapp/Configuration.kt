@@ -7,5 +7,9 @@ class Configuration : io.dropwizard.Configuration() {
 
     @JsonProperty
     @NotEmpty
+    lateinit var environment: String
+
+    @JsonProperty
+    @NotEmpty
     lateinit var version: String
 }
