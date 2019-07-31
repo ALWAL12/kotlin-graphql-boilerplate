@@ -24,7 +24,7 @@ abstract class UserRepositoryTest {
 
         val userFound = userRepository.findByEmail("JOHN.doe@ACME.com")
 
-        assertThat(userFound).isNull()
+        assertThat(userFound).isEqualTo(user)
     }
 
     @Test
